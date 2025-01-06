@@ -1,8 +1,6 @@
 const express = require('express');
 const {PORT} = require('./config/serverConfig');
 
-const CityRepository = require('./repository/cityRepository');
-
 const setupAndStartServer = async () => {
 
     // create the express object

@@ -7,8 +7,8 @@ class CityRepository {
             const city = await City.create({name});
             return city;
         } catch(error) {
-            console.log("Error in creating city");
-            throw(error);
+            console.log("Something went wrong at Repository layer");
+            throw {error};
         }
     }
 
@@ -19,9 +19,10 @@ class CityRepository {
                     id : cityId
                 }
             });
+            return true;
         } catch(error) {
-            console.log("Error in deleting city");
-            throw(error);
+            console.log("Something went wrong at Repository layer");
+            throw {error};
         }
     }
 
@@ -34,8 +35,8 @@ class CityRepository {
             })
             return city;
         } catch (error) {
-            console.log("Error in updating city");
-            throw(error);
+            console.log("Something went wrong at Repository layer");
+            throw {error};
         }
     }
 
@@ -45,8 +46,8 @@ class CityRepository {
             const city = await City.findByPk(cityId);
             return city;
         } catch (error) {
-            console.log("Error in retrieving city");
-            throw(error);
+            console.log("Something went wrong at Repository layer");
+            throw {error};
         }
     }
 }
