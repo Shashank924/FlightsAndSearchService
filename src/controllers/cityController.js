@@ -67,7 +67,7 @@ const update = async (req , res) => {
 
 const destroy = async (req , res) => {
     try {
-        const response = await cityServiceObject.createCity(req.params.id);
+        const response = await cityServiceObject.deleteCity(req.params.id);
         return res.status(200).json({
             data : response,
             success : true,
