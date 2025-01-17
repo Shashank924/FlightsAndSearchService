@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 const {PORT} = require('./config/serverConfig');
 const apiRoutes = require('./routes/index');
 
+const { Airport , City } = require('./models/index');
+
 const setupAndStartServer = async () => {
 
     // create the express object
@@ -15,7 +17,7 @@ const setupAndStartServer = async () => {
     app.use('/api' , apiRoutes);
 
     app.listen(PORT , async () => {
-        console.log(`server started at port ${PORT}`);
+        console.log(`Server Started at PORT ${PORT}`);
     })
 }
 
