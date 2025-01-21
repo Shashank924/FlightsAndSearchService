@@ -22,6 +22,25 @@ const create = async (req , res) => {
     }
 }
 
+const createCities = async (req , res) => {
+    try {
+        const cities = await cityServiceObject.createCities(req.body);
+        return res.status(201).json({
+            data : cities,
+            success : true,
+            message : "succesfully created Cities",
+            err : {}
+        })
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            data : {},
+            success : false,
+            message : "not able to create Cities",
+            err : error
+        })
+    }
+}
 
 const get = async (req , res) => {
     try {
@@ -103,10 +122,34 @@ const getAll = async (req , res) => {
         })
     }
 }
+
+const getAirports = async (req , res) => {
+    try {
+        console.log(req.params.id);
+        const airports = await cityServiceObject.getAirports(req.params.id);
+        return res.status(200).json({
+            data : airports,
+            success : true,
+            message : "Successfully fetched airports of the City",
+            err : {}
+        })
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            data : {},
+            success : false,
+            message : "not able to fetch cities",
+            err : error
+        })
+    }
+}
+
 module.exports = {
     create,
     get,
     update,
     destroy,
-    getAll
+    getAll,
+    getAirports,
+    createCities
 }

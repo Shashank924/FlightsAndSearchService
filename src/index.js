@@ -4,8 +4,6 @@ const bodyParser = require('body-parser');
 const {PORT} = require('./config/serverConfig');
 const apiRoutes = require('./routes/index');
 
-const { Airport , City } = require('./models/index');
-
 const setupAndStartServer = async () => {
 
     // create the express object
