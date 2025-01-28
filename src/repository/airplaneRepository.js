@@ -1,16 +1,10 @@
+const CrudRepository = require('./crudRepository');
 const { Airplane } = require('../models/index');
 
-class AirplaneRepository {
+class AirplaneRepository extends CrudRepository{
 
-    async getAirplane(airplaneId)
-    {
-        try {
-            const airplane = await Airplane.findByPk(airplaneId);
-            return airplane;
-        } catch (error) {
-            console.log("Something went wrong at repository layer");
-            throw {error};
-        }
+    constructor() {
+        super(Airplane);
     }
 }
 

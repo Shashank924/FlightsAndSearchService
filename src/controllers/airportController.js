@@ -24,7 +24,6 @@ const create = async (req , res) => {
 
 const destroy = async (req , res) => {
     try {
-        console.log(req.params.id);
         const response = await airportServiceObj.deleteAirport(req.params.id);
         return res.status(200).json({
             data : response,
@@ -86,7 +85,6 @@ const get = async (req , res) => {
 const getAll = async (req , res) => {
     try {
         const airports = await airportServiceObj.getAllAirports(req.query);
-        console.log(airports);
         return res.status(200).json({
             data : airports,
             success : true,
