@@ -1,11 +1,12 @@
 const AirplaneService = require('../services/airplaneService');
+const { errorCodes } = require('../utils/index');
 
 const airplaneServiceObj = new AirplaneService();
 
 const create = async (req , res) => {
     try {
         const airplane = await airplaneServiceObj.create(req.body);
-        return res.status(201).json({
+        return res.status(errorCodes.successCodes.CREATED).json({
             data : airplane,
             success : true,
             message : 'Airplane Added Successfully',
@@ -25,7 +26,7 @@ const create = async (req , res) => {
 const destroy = async (req , res) => {
     try {
         const response = await airplaneServiceObj.delete(req.params.id);
-        return res.status(200).json({
+        return res.status(errorCodes.successCodes.OK).json({
             data : response,
             success : true,
             message : 'Airplane deleted Successfully',
@@ -45,7 +46,7 @@ const destroy = async (req , res) => {
 const update = async (req , res) => {
     try {
         const airplane = await airplaneServiceObj.update(req.body , req.params.id);
-        return res.status(201).json({
+        return res.status(errorCodes.successCodes.CREATED).json({
             data : airplane,
             success : true,
             message : 'Airplane data Updated Successfully',
@@ -65,7 +66,7 @@ const update = async (req , res) => {
 const get = async (req , res) => {
     try {
         const airplane = await airplaneServiceObj.get(req.params.id);
-        return res.status(200).json({
+        return res.status(errorCodes.successCodes.OK).json({
             data : airplane,
             success : true,
             message : 'Airplane fetched Successfully',
